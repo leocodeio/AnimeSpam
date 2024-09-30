@@ -8,6 +8,12 @@
   font-family: Roboto, Arial, sans-serif;
 }
 
+@media screen and (max-width: 1000px) {
+  .container {
+    display: none;
+  }
+}
+
 .slider {
   display: flex;
   flex-direction: row;
