@@ -36,12 +36,11 @@ const Hero = () => {
             </span>
           </h1>
           <p className="body-1 max-w-3xl mx-auto mb-6 text-n-2 lg:mb-8">
-            Unleash the power of AI to upscale you videos with AnimeSpam. Upgrade your productivity
-            with AnimeSpam, the open AI upscaler app which make you vidoes stay ahead of the competition.
+            Unleash the power of AI to upscale you videos with AnimeSpam.
+            Upgrade your productivity with AnimeSpam, the open AI upscaler app
+            which make you vidoes stay ahead of the competition.
           </p>
-          <Button href="/#pricing" >
-            Get started
-          </Button>
+          <Button href="/#pricing">Get started</Button>
         </div>
         <div className="relative max-w-[23rem] mx-auto md:max-w-5xl xl:mb-24">
           <div className="relative z-1 p-0.5 rounded-2xl bg-conic-gradient">
@@ -72,7 +71,7 @@ const Hero = () => {
                 <ScrollParallax isAbsolutelyPositioned>
                   <Notification
                     className="hidden absolute -right-[5.5rem] bottom-[11rem] w-[18rem] xl:flex"
-                    title="Code generation"
+                    title="Vidoe enhancing"
                   />
                 </ScrollParallax>
               </div>
@@ -93,7 +92,7 @@ const Hero = () => {
           <BackgroundCircles />
         </div>
 
-        <CompanyLogos className="hidden relative z-10 mt-20 lg:block" />
+        {/* <CompanyLogos className="hidden relative z-10 mt-20 lg:block" />   */}
       </div>
 
       <BottomLine />

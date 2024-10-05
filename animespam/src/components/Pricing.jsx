@@ -3,11 +3,19 @@ import { smallSphere, stars } from "../assets";
 import Heading from "./Heading";
 import PricingList from "./PricingList";
 import { LeftLine, RightLine } from "./design/Pricing";
+import Button from "./Button";
+import { enablePageScroll } from "scroll-lock";
 
 const Pricing = () => {
   return (
     <Section className="overflow-hidden" id="pricing">
-      <div className="container relative z-2">
+      <div className="container relative z-2 mt-10">
+        <div className="w-full flex items-center justify-center mb-8">
+          <Button onClick={() => enablePageScroll()} href="/#features">
+            Download Twixtors for Free !!!
+          </Button>
+        </div>
+
         <div className="hidden relative justify-center mb-[6.5rem] lg:flex">
           <img
             src={smallSphere}
