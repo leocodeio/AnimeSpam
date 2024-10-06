@@ -40,23 +40,23 @@ export const navigation = [
   {
     id: "0",
     title: "Twixtors",
-    url: "#features",
+    url: "#slider",
   },
   {
     id: "1",
     title: "Upscale",
     url: "#pricing",
   },
-  {
-    id: "2",
-    title: "How to use",
-    url: "#how-to-use",
-  },
-  {
-    id: "3",
-    title: "Roadmap",
-    url: "#roadmap",
-  },
+  // {
+  //   id: "2",
+  //   title: "How to use",
+  //   url: "#how-to-use",
+  // },
+  // {
+  //   id: "3",
+  //   title: "How to use",
+  //   url: "#roadmap",
+  // },
   {
     id: "4",
     title: "New account",
@@ -209,36 +209,36 @@ export const pricing = [
   {
     id: "0",
     title: "Basic",
-    description: "AI chatbot, personalized recommendations",
+    description: "Download upscaled Twixtor clips",
     price: "0",
     features: [
-      "An AI chatbot that can understand your queries",
-      "Personalized recommendations based on your preferences",
-      "Ability to explore the app and its features without any cost",
+      "Download upscaled Twixtor clips without any cost",
+      "Create free account to download 4k clips",
+      "Use the clips without any watermarks",
     ],
   },
   {
     id: "1",
     title: "Premium",
-    description: "Advanced AI chatbot, priority support, analytics dashboard",
+    description: "Download upscaled Twixtor clips with premium features",
     price: "9.99",
     features: [
-      "An advanced AI chatbot that can understand complex queries",
-      "An analytics dashboard to track your conversations",
-      "Priority support to solve issues quickly",
+      "Upscale your own video through AnimeSpam dashboard",
+      "Calulate the quality score of you video",
+      "Direct contact with admin to get you own personolized upscaled clips",
     ],
   },
-  {
-    id: "2",
-    title: "Enterprise",
-    description: "Custom AI chatbot, advanced analytics, dedicated account",
-    price: null,
-    features: [
-      "An AI chatbot that can understand your queries",
-      "Personalized recommendations based on your preferences",
-      "Ability to explore the app and its features without any cost",
-    ],
-  },
+  // {
+  //   id: "2",
+  //   title: "Enterprise",
+  //   description: "Custom AI chatbot, advanced analytics, dedicated account",
+  //   price: null,
+  //   features: [
+  //     "An AI chatbot that can understand your queries",
+  //     "Personalized recommendations based on your preferences",
+  //     "Ability to explore the app and its features without any cost",
+  //   ],
+  // },
 ];
 
 export const benefits = [
@@ -324,5 +324,43 @@ export const socials = [
     title: "Facebook",
     iconUrl: facebook,
     url: "#",
+  },
+];
+
+export const items = [
+  {
+    id: "onepiece",
+    src: "./src/assets/slider/artifacts/luffy.jpg",
+    alt: "Luffy",
+  },
+  {
+    id: "sololevel",
+    src: "./src/assets/slider/artifacts/sololev.jpg",
+    alt: "Solo Leveling",
+  },
+  {
+    id: "naruto",
+    src: "./src/assets/slider/artifacts/naruto.jpg",
+    alt: "Naruto",
+  },
+  {
+    id: "jjk",
+    src: "./src/assets/slider/artifacts/jjk.png",
+    alt: "Jujutsu Kaisen",
+  },
+  {
+    id: "sololevel2",
+    src: "./src/assets/slider/artifacts/comingsoon.jpg",
+    alt: "Coming Soon",
+  },
+  {
+    id: "ani1",
+    src: "./src/assets/slider/artifacts/comingsoon.jpg",
+    alt: "Coming Soon",
+  },
+  {
+    id: "ani2",
+    src: "./src/assets/slider/artifacts/comingsoon.jpg",
+    alt: "Coming Soon",
   },
 ];

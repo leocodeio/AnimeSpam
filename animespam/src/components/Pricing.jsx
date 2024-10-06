@@ -11,7 +11,7 @@ const Pricing = () => {
     <Section className="overflow-hidden" id="pricing">
       <div className="container relative z-2 mt-10">
         <div className="w-full flex items-center justify-center mb-8">
-          <Button onClick={() => enablePageScroll()} href="/#features">
+          <Button onClick={() => enablePageScroll()} href="/#slider">
             Download Twixtors for Free !!!
           </Button>
         </div>
@@ -36,7 +36,7 @@ const Pricing = () => {
         </div>
 
         <Heading
-          tag="Get started with Brainwave"
+          tag="Upscale your videos with AnimeSpam"
           title="Pay once, use forever"
         />
 
@@ -46,14 +46,14 @@ const Pricing = () => {
           <RightLine />
         </div>
 
-        <div className="flex justify-center mt-10">
+        {/* <div className="flex justify-center mt-10">
           <a
             className="text-xs font-code font-bold tracking-wider uppercase border-b"
             href="/pricing"
           >
             See the full details
           </a>
-        </div>
+        </div> */}
       </div>
     </Section>
   );
