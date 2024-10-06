@@ -7,6 +7,7 @@ import Hero from "./components/Hero";
 import Pricing from "./components/Pricing";
 import Roadmap from "./components/Roadmap";
 import Services from "./components/Services";
+import Slider from "./components/slider";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <div className="pt-[4.75rem] lg:pt-[5.25rem] overflow-hidden">
         <Header />
         <Hero />
+        <Slider />  
         <Benefits />
         <Collaboration />
         <Services />

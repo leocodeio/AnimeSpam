@@ -326,3 +326,41 @@ export const socials = [
     url: "#",
   },
 ];
+
+export const items = [
+  {
+    id: "onepiece",
+    src: "./src/assets/slider/artifacts/luffy.jpg",
+    alt: "Luffy",
+  },
+  {
+    id: "sololevel",
+    src: "./src/assets/slider/artifacts/sololev.jpg",
+    alt: "Solo Leveling",
+  },
+  {
+    id: "naruto",
+    src: "./src/assets/slider/artifacts/naruto.jpg",
+    alt: "Naruto",
+  },
+  {
+    id: "jjk",
+    src: "./src/assets/slider/artifacts/jjk.png",
+    alt: "Jujutsu Kaisen",
+  },
+  {
+    id: "sololevel2",
+    src: "./src/assets/slider/artifacts/comingsoon.jpg",
+    alt: "Coming Soon",
+  },
+  {
+    id: "ani1",
+    src: "./src/assets/slider/artifacts/comingsoon.jpg",
+    alt: "Coming Soon",
+  },
+  {
+    id: "ani2",
+    src: "./src/assets/slider/artifacts/comingsoon.jpg",
+    alt: "Coming Soon",
+  },
+];
