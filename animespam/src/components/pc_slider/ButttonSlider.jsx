@@ -70,6 +70,7 @@ const ButtonSlider = () => {
                 e.preventDefault();
                 console.log("HI");
               }}
+              className="cursor-pointer"
             />
           </div>
         ))}
