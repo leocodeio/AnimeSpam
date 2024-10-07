@@ -364,3 +364,50 @@ export const items = [
     alt: "Coming Soon",
   },
 ];
+
+
+export const videoContent = {
+  "SOLO LEVELING": [
+    {
+      id: 1,
+      title: "Solo Leveling Ep-6 4K-Upscaled Twixtor",
+      videoUrl: "https://download1321.mediafire.com/5msjxdv9cx2giQxO3QviBr8YM6F3-VpJG6f4b8QqBVOnEzLvnrcn9iGUeXo6gyA-RIySXfx7Xmq__65xjJ7bIhSRTy87qTaNUThyy25KaIRJUCBOxh8Nxf1IwITLh17Y_aOwnIU2L3ZJEUVyfr0a4sjQGcqG2Y_9sLkCgNI4RZPTkGo/4axdn7dcv4288va/sololeving_ep6_4k_upscaled.mp4",
+      thumbnail: "./src/assets/slider/artifacts/sololev/sololevep6.jpg",
+      description: "Solo Leveling Episode 6 - 4K Upscaled",
+    }
+  ],
+  "NARUTO": [
+    {
+      id: 1,
+      title: "Obito 4K-Upscaled Twixtor",
+      videoUrl: "https://download1334.mediafire.com/0r54368dqqbg1B_kDQiXRwxTeTpeygs0szjcx_DLEkoKzRcenLBT06XzMCkEjhT-O_uNeKoc5ITRb_LxjUiOlUbI0ymuG2_fEd1v46h9PnfAJg93QK0kCuFdp21aJFlHrpCoghY9GzGla72c1POVu45E0l5RP7_et7dkKpMkfZtvHvSG/kpa8ogv1d4dwin4/obito_twixtor_4k_upscaled.mp4",
+      thumbnail: "/src/assets/slider/artifacts/naruto/obito.jpg",
+      description: "Naruto Obito 4K Upscaled Twixtor",
+    }
+  ],
+  "ONE PIECE": [
+    {
+      id: 1,
+      title: "Luffy Gear 5 Ep 1070+ 4K-Upscaled Twixtor",
+      videoUrl: "https://download1590.mediafire.com/c7gav8l90t6gqz3dV11W5pnGGYbvZsRVKfDTiRzW_-rF37e8-9op-MYbyOen23rDqCmStvlYBsnPCesE0S6QUn6ZiBrjmKtLu51VXBGMuZ2mEAA1d06IZ7MfApmmaLoPKxvOi7ktoXWCkr49Muqvfh39C_V5XwyUL9r4L-5g_EKCWVQ/ecx3pjvl9z30amb/luffy_gear5_ep1070%2B_4k_upscaled.mp4",
+      thumbnail: "artifacts/onepiece/luffy_sample.png",
+      description: "One Piece Luffy Gear 5 4K Upscaled",
+    },
+    {
+      id: 2,
+      title: "Zoro 4K-Upscaled Twixtor",
+      videoUrl: "https://download1585.mediafire.com/bcmuyqhog5wgRBF4xIlt4u-RSKcvTJr4V-mRAvsnah4eyPCGa0iN4EKPRG8nXQb7dh7vM3TVjZlfq_aplM-RqdhGBF5_Z_KQNAzqd9awzZnx7EFMEsZUgFKlBNkb40yImeY0Zu09gwOi7WCkJqd3505nt4yjNuTmHiJTmgavV26K8AID/6gsbd2svuqw2udn/zoro_twixtor_4k.mp4",
+      thumbnail: "artifacts/onepiece/zoro.jpg",
+      description: "One Piece Zoro 4K Upscaled Twixtor",
+    }
+  ],
+  "JUJUTSU KAISEN": [
+    {
+      id: 1,
+      title: "Sukuna 4K-Upscaled Twixtor",
+      videoUrl: "https://download1336.mediafire.com/748e06x45kagcqBtPNajsjQtYq2EMZjKYVR2Igo-7d5B5AgdyIPbrH-qwWij4quxDXTe64nc4oE50TLBDZhF7k91zzy7rcdJJHaUv00fa5D8PbAK_yKSkfvk8zzcQzQaK9Th7zjwLNmzH6Xpm1sPxiRXGRMPj475iBPyg2UAMjNFKVhU/ohnu35cv1ii6f7u/sukuna_upscaled_twixtor.mp4",
+      thumbnail: "artifacts/jjk/sukuna.jpg",
+      description: "Jujutsu Kaisen Sukuna 4K Upscaled Twixtor",
+    }
+  ]
+};
