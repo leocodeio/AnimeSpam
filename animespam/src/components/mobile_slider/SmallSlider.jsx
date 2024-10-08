@@ -10,8 +10,10 @@ import "./SmallSlider.css";
 // import required modules
 import { EffectCards } from "swiper/modules";
 import { items } from "../../constants";
+import { useNavigate } from "react-router-dom";
 
 const SmallSlider = () => {
+  const navigate = useNavigate();
   return (
     <>
       <Swiper
@@ -30,6 +32,7 @@ const SmallSlider = () => {
                 alt={item.alt}
                 onClick={(e) => {
                   e.preventDefault();
+                  navigate(`/anime/${item.alt}`);
                   console.log("HI");
                 }}
               />

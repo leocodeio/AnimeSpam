@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "./ButtonSlider.css";
 import { items } from "../../constants";
+import { useNavigate } from "react-router-dom";
 const ButtonSlider = () => {
   const [active, setActive] = useState(1);
 
+  const navigate = useNavigate();
   const loadShow = () => {
     const itemElements = document.querySelectorAll(".slider .item");
     let stt = 0;
@@ -69,6 +71,7 @@ const ButtonSlider = () => {
               onClick={(e) => {
                 e.preventDefault();
                 console.log("HI");
+                navigate(`/anime/${item.alt}`);
               }}
               className="cursor-pointer"
             />

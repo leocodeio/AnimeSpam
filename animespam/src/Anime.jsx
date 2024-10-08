@@ -1,23 +1,35 @@
-import { benefits } from "./constants";
+import { animeContent } from "./constants";
 import Heading from "./components/Heading";
 import Section from "./components/Section";
 import Arrow from "./assets/svg/Arrow";
 import { GradientLight } from "./components/design/Benefits";
 import Header from "./components/Header";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Anime = () => {
+  const { name } = useParams();
+  const [data, setData] = useState([]);
+  console.log(animeContent);
+  console.log(name.toUpperCase());
+  useEffect(() => {
+    setData(animeContent[name.toUpperCase()]);
+  }, [name]);
+
+  console.log(data);
+
   return (
     <>
       <Header />
       <Section id="features">
-        <div className="container relative z-2">
+        <div className="container relative z-2 mt-8">
           <Heading
             className="md:max-w-md lg:max-w-2xl"
-            title="Chat Smarter, Not Harder with Brainwave"
+            title="Fill the form to get a free premium subscription"
           />
 
           <div className="flex flex-wrap gap-10 mb-10">
-            {benefits.map((item) => (
+            {data.map((item) => (
               <div
                 className="block relative p-0.5 bg-no-repeat bg-[length:100%_100%] md:max-w-[24rem]"
                 style={{
@@ -44,7 +56,12 @@ const Anime = () => {
                 <GradientLight />
 
                 <div className="absolute inset-0.5 bg-n-8 border border-2 border-white rounded-[35px] overflow-hidden">
-                  <div className="absolute inset-0 opacity-20 transition-opacity hover:opacity-75">
+                  <div
+                    className="absolute inset-0 opacity-35 transition-opacity hover:opacity-75 cursor-pointer"
+                    onClick={() => {
+                      window.open(item.videoUrl, "_blank");
+                    }}
+                  >
                     {item.imageUrl && (
                       <img
                         src={item.imageUrl}
