@@ -4,19 +4,22 @@ import Section from "./components/Section";
 import Arrow from "./assets/svg/Arrow";
 import { GradientLight } from "./components/design/Benefits";
 import Header from "./components/Header";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const Anime = () => {
   const { name } = useParams();
   const [data, setData] = useState([]);
-  console.log(animeContent);
-  console.log(name.toUpperCase());
+  const navigate = useNavigate();
+  // console.log(animeContent);
+  // console.log(name.toUpperCase());
   useEffect(() => {
+    if (!animeContent[name.toUpperCase()]) {
+      navigate("/");
+    }
+
     setData(animeContent[name.toUpperCase()]);
   }, [name]);
-
-  console.log(data);
 
   return (
     <>
@@ -59,7 +62,7 @@ const Anime = () => {
                   <div
                     className="absolute inset-0 opacity-35 transition-opacity hover:opacity-75 cursor-pointer"
                     onClick={() => {
-                      window.open(item.videoUrl, "_blank");
+handleAnim
                     }}
                   >
                     {item.imageUrl && (
