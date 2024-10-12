@@ -4,19 +4,26 @@ import Section from "./components/Section";
 import Arrow from "./assets/svg/Arrow";
 import { GradientLight } from "./components/design/Benefits";
 import Header from "./components/Header";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const Anime = () => {
   const { name } = useParams();
   const [data, setData] = useState([]);
-  console.log(animeContent);
-  console.log(name.toUpperCase());
+  const navigate = useNavigate();
+  // console.log(animeContent);
+  // console.log(name.toUpperCase());
   useEffect(() => {
+    if (!animeContent[name.toUpperCase()]) {
+      navigate("/");
+    }
+
     setData(animeContent[name.toUpperCase()]);
   }, [name]);
 
-  console.log(data);
+  const handleAnime = (url) => {
+    window.open(url, "_blank");
+  };
 
   return (
     <>
@@ -25,7 +32,7 @@ const Anime = () => {
         <div className="container relative z-2 mt-8">
           <Heading
             className="md:max-w-md lg:max-w-2xl"
-            title="Fill the form to get a free premium subscription"
+            title="Do support me!!! You can download clips by clicking below"
           />
 
           <div className="flex flex-wrap gap-10 mb-10">
@@ -59,7 +66,7 @@ const Anime = () => {
                   <div
                     className="absolute inset-0 opacity-35 transition-opacity hover:opacity-75 cursor-pointer"
                     onClick={() => {
-                      window.open(item.videoUrl, "_blank");
+                      handleAnime(item.videoUrl);
                     }}
                   >
                     {item.imageUrl && (
