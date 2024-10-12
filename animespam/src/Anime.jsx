@@ -21,6 +21,10 @@ const Anime = () => {
     setData(animeContent[name.toUpperCase()]);
   }, [name]);
 
+  const handleAnime = (url) => {
+    window.open(url, "_blank");
+  };
+
   return (
     <>
       <Header />
@@ -28,7 +32,7 @@ const Anime = () => {
         <div className="container relative z-2 mt-8">
           <Heading
             className="md:max-w-md lg:max-w-2xl"
-            title="Fill the form to get a free premium subscription"
+            title="Do support me!!! You can download clips by clicking below"
           />
 
           <div className="flex flex-wrap gap-10 mb-10">
@@ -62,7 +66,7 @@ const Anime = () => {
                   <div
                     className="absolute inset-0 opacity-35 transition-opacity hover:opacity-75 cursor-pointer"
                     onClick={() => {
-handleAnim
+                      handleAnime(item.videoUrl);
                     }}
                   >
                     {item.imageUrl && (
