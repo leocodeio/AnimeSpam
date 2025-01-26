@@ -5,7 +5,7 @@ import Heading from "./Heading";
 
 const Slider = () => {
   return (
-    <div className="m-10 mt-32" id="slider">
+    <div className="m-10 my-32" id="slider">
       <Heading tag="Get started with AnimeSpam" title="Select anime and download Twixtors" />
       <ButtonSlider />
       <SmallSlider />
