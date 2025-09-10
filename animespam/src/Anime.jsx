@@ -11,8 +11,6 @@ const Anime = () => {
   const { name } = useParams();
   const [data, setData] = useState([]);
   const navigate = useNavigate();
-  // console.log(animeContent);
-  // console.log(name.toUpperCase());
   useEffect(() => {
     if (!animeContent[name.toUpperCase()]) {
       navigate("/");
@@ -62,7 +60,7 @@ const Anime = () => {
                 </div>
                 <GradientLight />
 
-                <div className="absolute inset-0.5 bg-n-8 border border-2 border-white rounded-[35px] overflow-hidden">
+                <div className="absolute inset-0.5 bg-n-8  border-2 border-white rounded-[35px] overflow-hidden">
                   <div
                     className="absolute inset-0 opacity-35 transition-opacity hover:opacity-75 cursor-pointer"
                     onClick={() => {

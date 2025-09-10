@@ -19,22 +19,34 @@ const PricingList = () => {
           <div className="flex items-center h-[5.5rem] mb-6">
             {item.price && (
               <>
-                <div className="h3">$</div>
-                <div className="text-[5.5rem] leading-none font-bold">
+                {/* <div className="h4">$</div>  */}
+                <div className="text-[2rem] leading-none font-bold">
                   {item.price}
                 </div>
               </>
             )}
           </div>
-
+          {/* 
           <Button
             className="w-full mb-6"
             href={item.price ? "/pricing" : "mailto:contact@jsmastery.pro"}
+            onClick={() => {
+              window.open("pittadasaiharshavardhan@gmail.com", "_blank");
+              window.open(" ");
+            }}
             white={!!item.price}
           >
             {item.price ? "Get started" : "Contact us"}
+            Text me
+          </Button> */}
+          <Button
+            className="w-full mb-6"
+            onClick={() => {
+              window.open("https://ig.me/m/animespam143 ", "_blank");
+            }}
+          >
+            Instagram me
           </Button>
-
           <ul>
             {item.features.map((feature, index) => (
               <li

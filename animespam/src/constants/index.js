@@ -208,26 +208,26 @@ export const collabApps = [
 export const pricing = [
   {
     id: "0",
-    title: "Basic",
-    description: "Download upscaled Twixtor clips",
-    price: "0",
+    title: "Contact me",
+    description: "Contact me to get your own clips upscaled!!!",
+    price: "Contact to discuss",
     features: [
-      "Download upscaled Twixtor clips without any cost",
-      "Create free account to download 4k clips",
-      "Use the clips without any watermarks",
+      "Contact me to get  your own clips upscaled!!!",
+      "Quality is guaranteed",
+      "Price is negotiable",
     ],
   },
-  {
-    id: "1",
-    title: "Premium",
-    description: "Download upscaled Twixtor clips with premium features",
-    price: "9.99",
-    features: [
-      "Upscale your own video through AnimeSpam dashboard",
-      "Calulate the quality score of you video",
-      "Direct contact with admin to get you own personolized upscaled clips",
-    ],
-  },
+  // {
+  //   id: "1",
+  //   title: "Premium",
+  //   description: "Download upscaled Twixtor clips with premium features",
+  //   price: "9.99",
+  //   features: [
+  //     "Upscale your own video through AnimeSpam dashboard",
+  //     "Calulate the quality score of you video",
+  //     "Direct contact with admin to get you own personolized upscaled clips",
+  //   ],
+  // },
   // {
   //   id: "2",
   //   title: "Enterprise",
@@ -394,7 +394,7 @@ export const animeContent = {
       title: "Luffy Gear 5 Ep 1070+ 4K-Upscaled Twixtor",
       videoUrl:
         "https://download1590.mediafire.com/c7gav8l90t6gqz3dV11W5pnGGYbvZsRVKfDTiRzW_-rF37e8-9op-MYbyOen23rDqCmStvlYBsnPCesE0S6QUn6ZiBrjmKtLu51VXBGMuZ2mEAA1d06IZ7MfApmmaLoPKxvOi7ktoXWCkr49Muqvfh39C_V5XwyUL9r4L-5g_EKCWVQ/ecx3pjvl9z30amb/luffy_gear5_ep1070%2B_4k_upscaled.mp4",
-        imageUrl: "/assets/slider/artifacts/onepiece/luffy_sample.webp",
+      imageUrl: "/assets/slider/artifacts/onepiece/luffy_sample.webp",
       description: "One Piece Luffy Gear 5 4K Upscaled",
     },
     {

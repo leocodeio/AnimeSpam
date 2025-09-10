@@ -5,6 +5,7 @@ import PricingList from "./PricingList";
 import { LeftLine, RightLine } from "./design/Pricing";
 import Button from "./Button";
 import { enablePageScroll } from "scroll-lock";
+import { FaArrowAltCircleDown } from "react-icons/fa";
 
 const Pricing = () => {
   return (
@@ -37,8 +38,11 @@ const Pricing = () => {
 
         <Heading
           tag="Upscale your videos with AnimeSpam"
-          title="Pay once, use forever"
+          title="Contact to discuss about upscaling your videos"
         />
+        <div className="flex justify-center">
+          <FaArrowAltCircleDown className="text-n-1 text-4xl" />
+        </div>
 
         <div className="relative">
           <PricingList />
