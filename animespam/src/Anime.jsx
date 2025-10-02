@@ -6,6 +6,7 @@ import { GradientLight } from "./components/design/Benefits";
 import Header from "./components/Header";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const Anime = () => {
   const { name } = useParams();
@@ -19,12 +20,34 @@ const Anime = () => {
     setData(animeContent[name.toUpperCase()]);
   }, [name]);
 
+  const animeNames = {
+    jjk: "Jujutsu Kaisen",
+    naruto: "Naruto",
+    onepiece: "One Piece",
+    sololev: "Solo Leveling"
+  };
+
+  const animeName = animeNames[name] || name;
+
   const handleAnime = (url) => {
     window.open(url, "_blank");
   };
 
   return (
     <>
+      <Helmet>
+        <title>{animeName} Clips & Edits - AnimeSpam</title>
+        <meta name="description" content={`Download premium ${animeName} clips and edits. High-quality anime content from ${animeName}.`} />
+        <meta name="keywords" content={`${animeName}, ${name}, anime clips, anime edits, download anime, ${animeName} videos`} />
+        <meta property="og:title" content={`${animeName} Clips & Edits - AnimeSpam`} />
+        <meta property="og:description" content={`Download premium ${animeName} clips and edits.`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`https://animespam.com/anime/${name}`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${animeName} Clips & Edits - AnimeSpam`} />
+        <meta name="twitter:description" content={`Download premium ${animeName} clips and edits.`} />
+        <link rel="canonical" href={`https://animespam.com/anime/${name}`} />
+      </Helmet>
       <Header />
       <Section id="features">
         <div className="container relative z-2 mt-8">
