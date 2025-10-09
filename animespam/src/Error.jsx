@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { smallSphere, stars } from "./assets";
 import { LeftLine, RightLine } from "./components/design/Pricing";
 import Heading from "./components/Heading";
