@@ -12,7 +12,6 @@ class JobStatusEnum(str, Enum):
     not_found = "not_found"
 
 class ScaleEnum(int, Enum):
-    x2 = 2
     x4 = 4
 
 class HealthResponse(BaseModel):

@@ -30,7 +30,7 @@ logger.info("Starting ESRGAN Anime Upscaler API")
 
 app = FastAPI(
     title="ESRGAN Anime Upscaler",
-    description="Real-ESRGAN powered anime video upscaling API",
+    description="Real-ESRGAN (RealESRGAN_x4plus_anime_6B) powered anime video upscaling API - 4x upscaling only",
     version="1.0.0"
 )
 
@@ -132,7 +132,7 @@ def process_video(job_id: str, input_path: Path, scale: int):
 async def enhance_video(
     background_tasks: BackgroundTasks,
     file: UploadFile = File(..., description="Video file to enhance"),
-    scale: ScaleEnum = Form(ScaleEnum.x4, description="Upscaling factor (2 or 4)")
+    scale: ScaleEnum = Form(ScaleEnum.x4, description="Upscaling factor (4x only)")
 ):
     MAX_FILE_SIZE = 100 * 1024 * 1024
     ALLOWED_EXTENSIONS = {'.mp4', '.avi', '.mov', '.mkv', '.webm'}
