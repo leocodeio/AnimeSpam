@@ -1,0 +1,15 @@
+# Real-ESRGAN virtual environment
+Real-ESRGAN/.venv/
+
+# Model weights (large files)
+Real-ESRGAN/weights/*.pth
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Temporary files
+Real-ESRGAN/temp/
+Real-ESRGAN/inputs/
+Real-ESRGAN/results/

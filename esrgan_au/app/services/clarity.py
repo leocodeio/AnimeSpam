@@ -18,8 +18,8 @@ class ClarityService:
             }
         }
         
-        current_dir = Path(__file__).parent.parent.parent.parent
-        self.realesrgan_path = current_dir / "anime_upscaler_v2" / "sources" / "Real-ESRGAN"
+        current_dir = Path(__file__).parent.parent.parent
+        self.realesrgan_path = current_dir / "sources" / "Real-ESRGAN"
         self.realesrgan_venv = self.realesrgan_path / ".venv" / "bin" / "python3"
     
     def check_model_availability(self, model_name: str) -> bool:
