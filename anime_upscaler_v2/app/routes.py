@@ -182,6 +182,7 @@ async def enhance_video_pipeline(job_id: str, input_file: Path, model: str = "wa
             enhanced_frames_dir, 
             model=model, 
             scale=scale,
+            max_workers=1,
             progress_callback=progress_callback
         ):
             update_job_status(job_id, "failed", 50, "Failed to enhance frames")

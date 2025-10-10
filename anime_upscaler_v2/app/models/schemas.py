@@ -14,6 +14,7 @@ class JobStatusEnum(str, Enum):
 
 class ModelEnum(str, Enum):
     """Available AI enhancement models"""
+    test = "test"
     waifu2x = "waifu2x"
     esrgan = "esrgan"
 

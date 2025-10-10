@@ -26,9 +26,9 @@ class ClarityService:
                 "requirements": ["mpv", "anime4k"]
             },
             "esrgan": {
-                "description": "High-quality upscaling using Real-ESRGAN",
-                "scales": [2, 4],
-                "requirements": ["python", "realesrgan"]
+                "description": "High-quality anime upscaling using Real-ESRGAN (RealESRGAN_x4plus_anime_6B)",
+                "scales": [4],
+                "requirements": ["python3"]
             },
             "waifu2x": {
                 "description": "Anime-style image upscaling",
@@ -37,6 +37,10 @@ class ClarityService:
                 "note": "4x is achieved by chaining two 2x passes"
             }
         }
+        
+        current_dir = Path(__file__).parent.parent.parent
+        self.realesrgan_path = current_dir / "sources" / "Real-ESRGAN"
+        self.realesrgan_venv = self.realesrgan_path / ".venv" / "bin" / "python3"
     
     def check_model_availability(self, model_name: str) -> bool:
         """
@@ -50,6 +54,9 @@ class ClarityService:
         """
         if model_name not in self.supported_models:
             return False
+        
+        if model_name == "esrgan":
+            return self.realesrgan_venv.exists() and self.realesrgan_path.exists()
         
         model_info = self.supported_models[model_name]
         requirements = model_info.get("requirements", [])
@@ -194,38 +201,70 @@ class ClarityService:
         Args:
             input_frame: Path to input frame
             output_frame: Path to output frame
-            scale: Upscaling factor
+            scale: Upscaling factor (only 4x supported)
             
         Returns:
             bool: True if enhancement successful, False otherwise
         """
         try:
-            # Ensure output directory exists
             output_frame.parent.mkdir(parents=True, exist_ok=True)
             
-            # Use Real-ESRGAN Python package if available
+            if not self.realesrgan_venv.exists():
+                logger.error(f"Real-ESRGAN virtual environment not found at {self.realesrgan_venv}")
+                return False
+            
+            inference_script = self.realesrgan_path / "inference_realesrgan.py"
+            if not inference_script.exists():
+                logger.error(f"Real-ESRGAN inference script not found at {inference_script}")
+                return False
+            
+            output_frame = output_frame.resolve()
+            output_dir = output_frame.parent
+            
             cmd = [
-                "realesrgan-ncnn-vulkan",
-                "-i", str(input_frame),
-                "-o", str(output_frame),
+                str(self.realesrgan_venv),
+                str(inference_script),
+                "-n", "RealESRGAN_x4plus_anime_6B",
+                "-i", str(input_frame.resolve()),
+                "-o", str(output_dir),
                 "-s", str(scale),
-                "-n", "realesr-animevideov3"
+                "--fp32",
+                "--tile", "256"
             ]
+            
+            logger.info(f"Running Real-ESRGAN: {' '.join(cmd)}")
             
             result = subprocess.run(
                 cmd,
                 capture_output=True,
                 text=True,
-                check=True
+                cwd=str(self.realesrgan_path),
+                timeout=60
             )
             
-            # Verify output file was created
+            logger.info(f"Real-ESRGAN stdout: {result.stdout}")
+            logger.info(f"Real-ESRGAN stderr: {result.stderr}")
+            logger.info(f"Real-ESRGAN return code: {result.returncode}")
+            
+            if result.returncode != 0:
+                logger.error(f"Real-ESRGAN error: {result.stderr}")
+                return False
+            
+            output_filename = input_frame.stem + "_out" + input_frame.suffix
+            actual_output = output_dir / output_filename
+            
+            if actual_output.exists() and actual_output != output_frame:
+                actual_output.rename(output_frame)
+            
             if output_frame.exists() and output_frame.stat().st_size > 0:
                 return True
             else:
                 logger.error(f"Enhanced frame was not created: {output_frame}")
                 return False
                 
+        except subprocess.TimeoutExpired:
+            logger.error("Real-ESRGAN processing timed out")
+            return False
         except subprocess.CalledProcessError as e:
             logger.error(f"Real-ESRGAN error: {e.stderr}")
             return False
