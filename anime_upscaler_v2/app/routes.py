@@ -310,7 +310,7 @@ async def enhance_video(
     update_job_status(job_id, "uploaded", 0, "Video uploaded successfully")
     
     # Start enhancement pipeline in background
-    background_tasks.add_task(enhance_video_pipeline, job_id, input_file, model, scale)
+    background_tasks.add_task(enhance_video_pipeline, job_id, input_file, model, scale.value)
     
     # Schedule cleanup after 24 hours
     background_tasks.add_task(cleanup_files, job_id)

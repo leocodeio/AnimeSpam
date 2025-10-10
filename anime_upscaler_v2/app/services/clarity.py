@@ -1,7 +1,7 @@
 import subprocess
 import os
 from pathlib import Path
-from typing import Optional, List, Dict, Any
+from typing import Optional, List, Dict, Any, Callable
 import logging
 import concurrent.futures
 import threading
@@ -18,7 +18,7 @@ class ClarityService:
             "test": {
                 "description": "Test mode - copies frames without enhancement (for testing)",
                 "scales": [1, 2],
-                "requirements": []  # No external requirements
+                "requirements": []
             },
             "anime4k": {
                 "description": "Fast anime upscaling using Anime4K",
@@ -32,8 +32,9 @@ class ClarityService:
             },
             "waifu2x": {
                 "description": "Anime-style image upscaling",
-                "scales": [2],
-                "requirements": ["waifu2x-ncnn-vulkan"]
+                "scales": [2, 4],
+                "requirements": ["waifu2x-ncnn-vulkan"],
+                "note": "4x is achieved by chaining two 2x passes"
             }
         }
     
@@ -93,7 +94,7 @@ class ClarityService:
         Args:
             input_frame: Path to input frame
             output_frame: Path to output frame
-            scale: Upscaling factor
+            scale: Upscaling factor (2 or 4; 4x is achieved by chaining two 2x passes)
             
         Returns:
             bool: True if enhancement successful, False otherwise
@@ -102,21 +103,75 @@ class ClarityService:
             # Ensure output directory exists
             output_frame.parent.mkdir(parents=True, exist_ok=True)
             
-            cmd = [
-                "waifu2x-ncnn-vulkan",
-                "-i", str(input_frame),
-                "-o", str(output_frame),
-                "-s", str(scale),
-                "-n", "2",  # Noise reduction level
-                "-f", "png"
-            ]
+            # Get model path (relative to this file's location)
+            current_dir = Path(__file__).parent.parent.parent
+            model_path = current_dir / "sources" / "waifu2x-ncnn-vulkan-20220728-ubuntu" / "models-cunet"
+            logger.info(f"Model path: {model_path}, exists: {model_path.exists()}")
             
-            result = subprocess.run(
-                cmd,
-                capture_output=True,
-                text=True,
-                check=True
-            )
+            # For 4x scaling, apply 2x twice
+            if scale == 4:
+                # Create temporary file for intermediate result
+                temp_frame = output_frame.parent / f"temp_{output_frame.name}"
+                
+                # First pass: 2x
+                cmd1 = [
+                    "waifu2x-ncnn-vulkan",
+                    "-i", str(input_frame),
+                    "-o", str(temp_frame),
+                    "-s", "2",
+                    "-n", "2",
+                    "-m", str(model_path),
+                    "-f", "png"
+                ]
+                
+                result1 = subprocess.run(
+                    cmd1,
+                    capture_output=True,
+                    text=True,
+                    check=True
+                )
+                
+                # Second pass: 2x on the intermediate result
+                cmd2 = [
+                    "waifu2x-ncnn-vulkan",
+                    "-i", str(temp_frame),
+                    "-o", str(output_frame),
+                    "-s", "2",
+                    "-n", "0",
+                    "-m", str(model_path),
+                    "-f", "png"
+                ]
+                
+                result2 = subprocess.run(
+                    cmd2,
+                    capture_output=True,
+                    text=True,
+                    check=True
+                )
+                
+                # Clean up temporary file
+                if temp_frame.exists():
+                    temp_frame.unlink()
+                    
+            else:
+                # Single pass for 2x or other scales
+                cmd = [
+                    "waifu2x-ncnn-vulkan",
+                    "-i", str(input_frame),
+                    "-o", str(output_frame),
+                    "-s", str(scale),
+                    "-n", "2",
+                    "-m", str(model_path),
+                    "-f", "png"
+                ]
+                
+                logger.info(f"Running command: {' '.join(cmd)}")
+                result = subprocess.run(
+                    cmd,
+                    capture_output=True,
+                    text=True,
+                    check=True
+                )
             
             # Verify output file was created
             if output_frame.exists() and output_frame.stat().st_size > 0:
@@ -154,7 +209,7 @@ class ClarityService:
                 "-i", str(input_frame),
                 "-o", str(output_frame),
                 "-s", str(scale),
-                "-n", "realesr-animevideov3"  # Anime-specific model
+                "-n", "realesr-animevideov3"
             ]
             
             result = subprocess.run(
@@ -217,7 +272,7 @@ class ClarityService:
         model: str = "waifu2x",
         scale: int = 2,
         max_workers: int = 4,
-        progress_callback: Optional[callable] = None
+        progress_callback: Optional[Callable] = None
     ) -> bool:
         """
         Enhance multiple frames in parallel
@@ -308,10 +363,10 @@ class ClarityService:
         """
         # Base processing times per frame (in seconds)
         base_times = {
-            "test": 0.1,       # Very fast (just copying)
-            "waifu2x": 2.0,    # Fast
-            "esrgan": 5.0,     # Slower but higher quality
-            "anime4k": 0.5     # Very fast
+            "test": 0.1,
+            "waifu2x": 2.0,
+            "esrgan": 5.0,
+            "anime4k": 0.5
         }
         
         base_time = base_times.get(model, 2.0)

@@ -2,8 +2,20 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import os
+import logging
 from .routes import router
 from .models.schemas import RootResponse, HealthResponse
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler()
+    ]
+)
+
+logger = logging.getLogger(__name__)
+logger.info("Starting Anime Upscaler V2 API - Logging initialized")
 
 app = FastAPI(
     title="Anime Upscaler V2",
